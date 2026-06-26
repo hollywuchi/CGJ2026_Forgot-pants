@@ -201,7 +201,11 @@ QualitySettings:
     skinWeights: 255
     textureQuality: 0
     anisotropicTextures: 2
+<<<<<<< HEAD
     antiAliasing: 0
+=======
+    antiAliasing: 2
+>>>>>>> origin/HollyWuchi
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
