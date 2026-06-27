@@ -9,6 +9,7 @@ public class OnStartGameClicked : MonoBehaviour
     public void StartButton()
     {
         mainPanel.SetActive(false);
-        loderPanel.SetActive(true);
+        //获取加载UI的LoadingScreen脚本
+        loderPanel.GetComponent<LoadingScreen>().StartLoadingScene("PersistentScene");
     }
 }
