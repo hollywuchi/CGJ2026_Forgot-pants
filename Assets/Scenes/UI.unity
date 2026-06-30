@@ -376,7 +376,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 38501010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e8a98b1f5195246ba37df9489636fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cefafb05261ed847b69ecfbcb476fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &129316989
@@ -895,7 +895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264861078}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 929616109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b2b8f18c56089d4fa6694ccf949de8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fba161f411901c49b44fdbdb1ada587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainPanel: {fileID: 977278330}
@@ -2532,7 +2532,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1195171460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4977df248a4a69b4cb16a72894ca1ba9, type: 3}
+  m_Script: {fileID: 11500000, guid: d2ef52f9a4b14ff498e0983fbbfab92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   settingPanel: {fileID: 836026379}
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1316922629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709df66e020730b4bb9850488abfe812, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b096ea52cebb3b4cb12e9a2c8ad6fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainPanel: {fileID: 977278330}
@@ -3871,7 +3871,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 953152887460201679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244da7999dc90ea4e9c0e3971e3960e8, type: 3}
+  m_Script: {fileID: 11500000, guid: c96091bba3f60d24cb12680f2eb986de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &4601354712091740485
