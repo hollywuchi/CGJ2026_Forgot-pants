@@ -106,7 +106,6 @@
       },
       "url": "https://packages.unity.cn"
     },
-<<<<<<< HEAD
     "com.unity.cinemachine": {
       "version": "2.10.7",
       "depth": 0,
@@ -116,8 +115,6 @@
       },
       "url": "https://packages.unity.cn"
     },
-=======
->>>>>>> b9f8bc0bfd384d06114b22f22cd5df9c3c245767
     "com.unity.collections": {
       "version": "1.2.4",
       "depth": 2,
