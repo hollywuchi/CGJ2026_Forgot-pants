@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class TestPopup : MonoBehaviour
+public class UsePopup : MonoBehaviour
 {
     // µ¯´°Ô¤ÖÆÌåÍÏ×§
     public GameObject popupPrefab;
