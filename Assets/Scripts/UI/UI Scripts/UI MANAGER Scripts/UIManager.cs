@@ -84,4 +84,29 @@ public class UIManager : MonoBehaviour
         return newPanel;
     }
 
+
+    /// <summary>
+    /// 重置 UI 场景到初始状态：只显示主菜单，隐藏所有其他面板。
+
+    public void ResetToInitialState()
+    {
+        // 1. My Canvas 下：只显示主界面面板
+        Transform myCanvas = transform.Find("MainCanvas");
+        if (myCanvas != null)
+        {
+            for (int i = 0; i < myCanvas.childCount; i++)
+            {
+                Transform panel = myCanvas.GetChild(i);
+                bool isMainMenu = panel.name == "主界面面板";
+                panel.gameObject.SetActive(isMainMenu);
+            }
+        }
+        // 2. BackPack Canvas：独立隐藏
+        Transform backpackCanvas = transform.Find("BackPack Canvas");
+        if (backpackCanvas != null)
+        {
+            backpackCanvas.gameObject.SetActive(false);
+        }
+    }
+
 }
