@@ -107,6 +107,12 @@ public class UIManager : MonoBehaviour
         {
             backpackCanvas.gameObject.SetActive(false);
         }
+
+        Transform endCanvas = transform.Find(" EndCanvas");
+        if (endCanvas != null)
+        {
+            endCanvas.gameObject.SetActive(false);
+        }
     }
 
 }
