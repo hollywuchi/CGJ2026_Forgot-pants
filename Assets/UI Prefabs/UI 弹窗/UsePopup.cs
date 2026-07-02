@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class UsePopup : MonoBehaviour
 {
+
+    //写入程序代码即可
     // 弹窗预制体拖拽
     public GameObject popupPrefab;
 

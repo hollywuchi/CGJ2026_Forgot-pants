@@ -2,35 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class DialogLine
+{
+    public string speakerName;
+    public string dialogText;
+}
+
 public class UseDialogExample : MonoBehaviour
 {
     public GameObject dialogPrefab;
 
-    public void OnStartDialog()
+    private DialogBoxController cachedDialog;
+
+    public void StartDialog(List<DialogLine> lines)
     {
-        StartCoroutine(DialogCoroutine());
+        // 每次启动新对话时，重置缓存的引用，防止上次销毁后残留
+        cachedDialog = null;
+        StartCoroutine(DialogCoroutine(lines));
     }
 
-    private IEnumerator DialogCoroutine()
+    private IEnumerator DialogCoroutine(List<DialogLine> lines)
     {
-        // 实例化对话框预制体
         GameObject obj = UIManager.Instance.ShowPanelReturn(dialogPrefab);
-        DialogBoxController dialog = obj.GetComponent<DialogBoxController>();
 
-        // 逐句显示对话
-        yield return StartCoroutine(ShowLineAndWait(dialog, "角色A", "你好，冒险者。"));
-        yield return StartCoroutine(ShowLineAndWait(dialog, "角色B", "你是谁？"));
-        yield return StartCoroutine(ShowLineAndWait(dialog, "角色A", "我是这里的向导。"));
-        yield return StartCoroutine(ShowLineAndWait(dialog, "角色B", "原来如此,谢谢。"));
-        yield return StartCoroutine(ShowLineAndWait(dialog, "角色A", "前面危险,请小心。"));
+        yield return null;
 
-        //全部对话结束，关闭对话框
-        dialog.Close();
+        cachedDialog = obj.GetComponent<DialogBoxController>();
+
+
+        foreach (DialogLine line in lines)
+        {
+            yield return StartCoroutine(ShowLineAndWait(line.speakerName, line.dialogText));
+        }
+
+        cachedDialog.Close();
     }
 
-    private IEnumerator ShowLineAndWait(DialogBoxController dialog, string speaker, string text)
+    private IEnumerator ShowLineAndWait(string speaker, string text)
     {
-        dialog.ShowLine(speaker, text);
-        yield return dialog.WaitForContinue();
+        cachedDialog.ShowLine(speaker, text);
+        yield return cachedDialog.WaitForContinue();
     }
 }

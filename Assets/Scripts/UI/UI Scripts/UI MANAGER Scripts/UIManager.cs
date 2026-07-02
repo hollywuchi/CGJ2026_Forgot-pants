@@ -90,7 +90,7 @@ public class UIManager : MonoBehaviour
 
     public void ResetToInitialState()
     {
-        // 1. My Canvas 下：只显示主界面面板
+        // 1. MainCanvas 下：只显示主界面面板，隐藏其他所有子物体
         Transform myCanvas = transform.Find("MainCanvas");
         if (myCanvas != null)
         {
@@ -101,11 +101,19 @@ public class UIManager : MonoBehaviour
                 panel.gameObject.SetActive(isMainMenu);
             }
         }
+
         // 2. BackPack Canvas：独立隐藏
-        Transform backpackCanvas = transform.Find("BackPack Canvas");
+        Transform backpackCanvas = transform.Find("backpack canvas");
         if (backpackCanvas != null)
         {
             backpackCanvas.gameObject.SetActive(false);
+        }
+
+        // 3. End Canvas：独立隐藏（新增）
+        Transform endCanvas = transform.Find(" EndCanvas");
+        if (endCanvas != null)
+        {
+            endCanvas.gameObject.SetActive(false);
         }
     }
 
