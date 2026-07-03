@@ -20,3 +20,21 @@ MonoBehaviour:
       dialogueText: 
       hasToPause: 0
       isDown: 0
+    - name: 
+      faceImage: {fileID: 0}
+      onLeft: 0
+      dialogueText: 
+      hasToPause: 0
+      isDown: 0
+    - name: 
+      faceImage: {fileID: 0}
+      onLeft: 0
+      dialogueText: 
+      hasToPause: 0
+      isDown: 0
+    - name: 
+      faceImage: {fileID: 0}
+      onLeft: 0
+      dialogueText: 
+      hasToPause: 0
+      isDown: 0

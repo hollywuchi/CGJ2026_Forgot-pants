@@ -43,6 +43,22 @@ public static class EventHandler
         StartNewGameEvent?.Invoke(obj);
     }
 
+    public static event Action<SoundName> PlaySoundEvent;
+    public static void CallPlaySoundEvent(SoundName soundName)
+    {
+        PlaySoundEvent?.Invoke(soundName);
+    }
 
+    public static event Action<ParticalEffectType, Vector3> ParticalEffectEvent;
+    public static void CallParticalEffectEvent(ParticalEffectType type, Vector3 pos)
+    {
+        ParticalEffectEvent?.Invoke(type, pos);
+    }
+
+    public static event Action<SoundDetails> InitSoundEffect;
+    public static void CallInitSoundEffect(SoundDetails sound)
+    {
+        InitSoundEffect?.Invoke(sound);
+    }
 
 }

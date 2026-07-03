@@ -27,45 +27,38 @@ public class AudioManager : Singleton<AudioManager>
     private float musicTransitionSecond = 4f;
     void Start()
     {
-        PlayMusicClip(soundDetailList.GetSoundDetails(SoundName.Music_UI), 1f);
+        // TODO:采集音频
+        // PlayMusicClip(soundDetailList.GetSoundDetails(SoundName.Music_UI), 1f);
     }
     void OnEnable()
     {
-        // EventHandler.AfterSceneLoadEvent += OnAfterSceneLoadEvent;
-        // EventHandler.PlaySoundEvent += OnPlaySoundEvent;
+        EventHandler.AfterSceneLoadEvent += OnAfterSceneLoadEvent;
+        EventHandler.PlaySoundEvent += OnPlaySoundEvent;
         // EventHandler.EndGameEvent += OnEndGameEvent;
     }
 
     void OnDisable()
     {
-        // EventHandler.AfterSceneLoadEvent -= OnAfterSceneLoadEvent;
-        // EventHandler.PlaySoundEvent -= OnPlaySoundEvent;
+        EventHandler.AfterSceneLoadEvent -= OnAfterSceneLoadEvent;
+        EventHandler.PlaySoundEvent -= OnPlaySoundEvent;
         // EventHandler.EndGameEvent -= OnEndGameEvent;
     }
 
 
     private void OnAfterSceneLoadEvent()
     {
-        // timeline用不到
-        // if (TimeLineManager.Instance.startDirector.state == UnityEngine.Playables.PlayState.Playing)
-        // {
-        //     ambientOnly.TransitionTo(1);
-        //     return;
-        // }
         string currentScene = SceneManager.GetActiveScene().name;
 
-        SceneSoundItem sceneSound = sceneSoundList.GetSceneSound(currentScene);
-        if (sceneSound == null)
-            return;
+        // SceneSoundItem sceneSound = sceneSoundList.GetSceneSound(currentScene);
+        // if (sceneSound == null)
+        //     return;
 
-        SoundDetails ambient = soundDetailList.GetSoundDetails(sceneSound.ambient);
-        SoundDetails gameSource = soundDetailList.GetSoundDetails(sceneSound.music);
+        // SoundDetails ambient = soundDetailList.GetSoundDetails(sceneSound.ambient);
+        // SoundDetails gameSource = soundDetailList.GetSoundDetails(sceneSound.music);
 
-        // PlayAmbientClip(ambient);
-        // PlayMusicClip(gameSource);
         if (soundRoutine != null)
             StopCoroutine(soundRoutine);
-        soundRoutine = StartCoroutine(PlaySoundRoutine(gameSource, ambient));
+        // soundRoutine = StartCoroutine(PlaySoundRoutine(gameSource, ambient));
 
     }
     private void OnPlaySoundEvent(SoundName soundName)
