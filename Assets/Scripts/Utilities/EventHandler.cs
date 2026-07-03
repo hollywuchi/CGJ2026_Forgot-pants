@@ -7,10 +7,42 @@ using UnityEngine;
 /// </summary>
 public static class EventHandler
 {
+    /// <summary>
+    /// 触发传送事件
+    /// </summary>
     public static event Action<string, Vector3> TransitionEvent;
-
-    public static void TriggerTransitionEvent(string sceneName, Vector3 position)
+    public static void CallTransitionEvent(string sceneName, Vector3 position)
     {
         TransitionEvent?.Invoke(sceneName, position);
     }
+
+    /// <summary>
+    /// 场景转换前执行的事件
+    /// </summary>
+    public static event Action BeforeSceneUnloadEvent;
+    public static void CallBeforeSceneUnloadEvent()
+    {
+        BeforeSceneUnloadEvent?.Invoke();
+    }
+
+    /// <summary>
+    /// 场景转换后执行的事件
+    /// </summary>
+    public static event Action AfterSceneLoadEvent;
+    public static void CallAfterSceneLoadEvent()
+    {
+        AfterSceneLoadEvent?.Invoke();
+    }
+
+    /// <summary>
+    /// 新游戏事件
+    /// </summary>
+    public static event Action<int> StartNewGameEvent;
+    public static void CallStartNewGameEvent(int obj)
+    {
+        StartNewGameEvent?.Invoke(obj);
+    }
+
+
+
 }
