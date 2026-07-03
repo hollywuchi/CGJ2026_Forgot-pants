@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 [System.Serializable]
 public class DialogLine
 {
     public string speakerName;
     public string dialogText;
+    public string portraitName;   // 新增字段：立绘图片名称（如 "001"）
 }
 
 public class UseDialogExample : MonoBehaviour
@@ -25,15 +25,11 @@ public class UseDialogExample : MonoBehaviour
     private IEnumerator DialogCoroutine(List<DialogLine> lines)
     {
         GameObject obj = UIManager.Instance.ShowPanelReturn(dialogPrefab);
-
-        yield return null;
-
         cachedDialog = obj.GetComponent<DialogBoxController>();
-
 
         foreach (DialogLine line in lines)
         {
-            yield return StartCoroutine(ShowLineAndWait(line.speakerName, line.dialogText));
+            yield return StartCoroutine(ShowLineAndWait(line));  // 使用新重载
         }
 
         cachedDialog.Close();
@@ -44,4 +40,11 @@ public class UseDialogExample : MonoBehaviour
         cachedDialog.ShowLine(speaker, text);
         yield return cachedDialog.WaitForContinue();
     }
+
+    private IEnumerator ShowLineAndWait(DialogLine line)
+    {
+        cachedDialog.ShowLine(line);  // 调用 DialogBoxController 的新方法
+        yield return cachedDialog.WaitForContinue();
+    }
+
 }

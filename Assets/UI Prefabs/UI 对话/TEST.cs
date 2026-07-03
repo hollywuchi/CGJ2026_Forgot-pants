@@ -19,9 +19,9 @@ public class TEST : MonoBehaviour
         //存储对话内容
         List<DialogLine> lines = new List<DialogLine>
         {
-            new DialogLine { speakerName = "111", dialogText = "222" },
-            new DialogLine { speakerName = "234", dialogText = "567" },
-            new DialogLine { speakerName = "890", dialogText = "00012" }
+            new DialogLine { speakerName = "111", dialogText = "222" ,portraitName = "001"},
+            new DialogLine { speakerName = "234", dialogText = "567",portraitName = "001" },
+            new DialogLine { speakerName = "890", dialogText = "00012",portraitName = "000" }
         };
         //最终方法调用
         dialog.StartDialog(lines);

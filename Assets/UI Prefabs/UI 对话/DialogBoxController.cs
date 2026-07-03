@@ -12,8 +12,11 @@ public class DialogBoxController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogContent;
     [SerializeField] private TextMeshProUGUI continueLabel;
 
+    [Header("角色立绘容器")]
+    [SerializeField] private Image characterPortrait;
+
     private bool canContinue = false;
-    private Button bgButton;
+    private Button textButton;
 
     private void Start()
     {
@@ -25,7 +28,7 @@ public class DialogBoxController : MonoBehaviour
     {
         if (dialogContent != null)
         {
-            Button textButton = dialogContent.GetComponent<Button>();
+            textButton = dialogContent.GetComponent<Button>();
             if (textButton == null)
                 textButton = dialogContent.gameObject.AddComponent<Button>();
             textButton.onClick.RemoveAllListeners();
@@ -39,6 +42,23 @@ public class DialogBoxController : MonoBehaviour
         dialogContent.text = dialogText;
         canContinue = false;
         continueLabel.gameObject.SetActive(true);
+
+        // ===== 新增：根据说话人名称自动加载立绘 =====
+        if (characterPortrait != null)
+        {
+            // 假设立绘图片放在 Assets/Resources/Portraits/ 下，名称与 speakerName 一致
+            Sprite portrait = Resources.Load<Sprite>($"Portraits/{speakerName}");
+            if (portrait != null)
+            {
+                characterPortrait.sprite = portrait;
+                characterPortrait.gameObject.SetActive(true);
+            }
+            else
+            {
+                // 如果找不到对应图片，隐藏立绘容器
+                characterPortrait.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void OnContinueClicked()
@@ -46,15 +66,11 @@ public class DialogBoxController : MonoBehaviour
         canContinue = true;
     }
 
-
-      public IEnumerator WaitForContinue()
+    public IEnumerator WaitForContinue()
     {
         yield return null;
-
-        // 循环等待，直到 canContinue 为 true
         while (!canContinue)
             yield return null;
-
         canContinue = false;
     }
 
@@ -62,4 +78,24 @@ public class DialogBoxController : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public void ShowLine(DialogLine line)
+    {
+        ShowLine(line.speakerName, line.dialogText);
+
+        if (!string.IsNullOrEmpty(line.portraitName) && characterPortrait != null)
+        {
+            Sprite portrait = Resources.Load<Sprite>($"Portraits/{line.portraitName}");
+            if (portrait != null)
+            {
+                characterPortrait.sprite = portrait;
+                characterPortrait.gameObject.SetActive(true);
+            }
+            else
+            {
+                characterPortrait.gameObject.SetActive(false);
+            }
+        }
+    }
+
+
 }
