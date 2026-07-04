@@ -13,28 +13,16 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   npcDialogueList:
-  - dialogues:
-    - name: 
-      faceImage: {fileID: 0}
-      onLeft: 0
-      dialogueText: 
+    dialogues:
+    - name: 123
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C"
       hasToPause: 0
       isDown: 0
-    - name: 
-      faceImage: {fileID: 0}
+    - name: 456
+      faceImage: {fileID: 94668373, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
       onLeft: 0
-      dialogueText: 
-      hasToPause: 0
-      isDown: 0
-    - name: 
-      faceImage: {fileID: 0}
-      onLeft: 0
-      dialogueText: 
-      hasToPause: 0
-      isDown: 0
-    - name: 
-      faceImage: {fileID: 0}
-      onLeft: 0
-      dialogueText: 
+      dialogueText: "\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C\u6D4B\u8BD5\u6587\u672C"
       hasToPause: 0
       isDown: 0

@@ -22,12 +22,14 @@ public class Demon : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private SpriteRenderer demonSpriteRenderer;
+    private Animator demonAnimator;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         demonSpriteRenderer = GetComponent<SpriteRenderer>();
+        demonAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -35,13 +37,13 @@ public class Demon : MonoBehaviour
         if (needFading)
         {
             demonSpriteRenderer.DOFade(0, fadeTime)
-            .SetEase(Ease.OutCubic)
+            .SetEase(Ease.Linear)
             .OnComplete(() => coll.excludeLayers = LayerMask.GetMask("Player"));
         }
         else
         {
             demonSpriteRenderer.DOFade(1, appearTime)
-            .SetEase(Ease.OutCubic)
+            .SetEase(Ease.Linear)
             .OnComplete(() => coll.excludeLayers = 0);
         }
     }

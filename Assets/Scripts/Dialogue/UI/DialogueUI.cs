@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using DG.Tweening;
-using Farm.Dialogue;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,18 +9,18 @@ public class DialogueUI : MonoBehaviour
     public Text dialogueText;
     public Image faceRight, faceLeft;
     public Text nameRight, nameLeft;
-    public GameObject continueBox;
+    // public GameObject continueBox;
     void Awake()
     {
-        continueBox.SetActive(false);
+        // continueBox.SetActive(false);
     }
     void OnEnable()
     {
-        // EventHandler.ShowDialogueEvent += OnShowDialogueEvent;
+        EventHandler.ShowDialogueEvent += OnShowDialogueEvent;
     }
     void OnDisable()
     {
-        // EventHandler.ShowDialogueEvent -= OnShowDialogueEvent;
+        EventHandler.ShowDialogueEvent -= OnShowDialogueEvent;
     }
 
     private void OnShowDialogueEvent(DialoguePiece piece)
@@ -39,7 +35,7 @@ public class DialogueUI : MonoBehaviour
             piece.isDown = false;
 
             dialogueBox.SetActive(true);
-            continueBox.SetActive(false);
+            // continueBox.SetActive(false);
 
             dialogueText.text = string.Empty;
 
@@ -73,8 +69,8 @@ public class DialogueUI : MonoBehaviour
             yield return dialogueText.DOText(piece.dialogueText, 1f).WaitForCompletion();   // 等待完成
             piece.isDown = true;
 
-            if (piece.hasToPause && piece.isDown)
-                continueBox.SetActive(true);
+            // if (piece.hasToPause && piece.isDown)
+                // continueBox.SetActive(true);
         }
         else
         {

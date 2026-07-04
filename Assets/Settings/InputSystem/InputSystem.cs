@@ -159,6 +159,34 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""DialogueSystem"",
+            ""id"": ""07f52327-b711-4186-9ef8-76031729abcb"",
+            ""actions"": [
+                {
+                    ""name"": ""Dialogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""5fb99533-9e09-44fc-bc84-ae9be6b587fd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""67bd287b-81ec-4cde-8a80-daaaf16b8d5e"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -166,11 +194,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         // MoveSystem
         m_MoveSystem = asset.FindActionMap("MoveSystem", throwIfNotFound: true);
         m_MoveSystem_Move = m_MoveSystem.FindAction("Move", throwIfNotFound: true);
+        // DialogueSystem
+        m_DialogueSystem = asset.FindActionMap("DialogueSystem", throwIfNotFound: true);
+        m_DialogueSystem_Dialogue = m_DialogueSystem.FindAction("Dialogue", throwIfNotFound: true);
     }
 
     ~@InputSystem()
     {
         UnityEngine.Debug.Assert(!m_MoveSystem.enabled, "This will cause a leak and performance issues, InputSystem.MoveSystem.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_DialogueSystem.enabled, "This will cause a leak and performance issues, InputSystem.DialogueSystem.Disable() has not been called.");
     }
 
     /// <summary>
@@ -338,6 +370,102 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="MoveSystemActions" /> instance referencing this action map.
     /// </summary>
     public MoveSystemActions @MoveSystem => new MoveSystemActions(this);
+
+    // DialogueSystem
+    private readonly InputActionMap m_DialogueSystem;
+    private List<IDialogueSystemActions> m_DialogueSystemActionsCallbackInterfaces = new List<IDialogueSystemActions>();
+    private readonly InputAction m_DialogueSystem_Dialogue;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "DialogueSystem".
+    /// </summary>
+    public struct DialogueSystemActions
+    {
+        private @InputSystem m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public DialogueSystemActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "DialogueSystem/Dialogue".
+        /// </summary>
+        public InputAction @Dialogue => m_Wrapper.m_DialogueSystem_Dialogue;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_DialogueSystem; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="DialogueSystemActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(DialogueSystemActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="DialogueSystemActions" />
+        public void AddCallbacks(IDialogueSystemActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueSystemActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueSystemActionsCallbackInterfaces.Add(instance);
+            @Dialogue.started += instance.OnDialogue;
+            @Dialogue.performed += instance.OnDialogue;
+            @Dialogue.canceled += instance.OnDialogue;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="DialogueSystemActions" />
+        private void UnregisterCallbacks(IDialogueSystemActions instance)
+        {
+            @Dialogue.started -= instance.OnDialogue;
+            @Dialogue.performed -= instance.OnDialogue;
+            @Dialogue.canceled -= instance.OnDialogue;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="DialogueSystemActions.UnregisterCallbacks(IDialogueSystemActions)" />.
+        /// </summary>
+        /// <seealso cref="DialogueSystemActions.UnregisterCallbacks(IDialogueSystemActions)" />
+        public void RemoveCallbacks(IDialogueSystemActions instance)
+        {
+            if (m_Wrapper.m_DialogueSystemActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="DialogueSystemActions.AddCallbacks(IDialogueSystemActions)" />
+        /// <seealso cref="DialogueSystemActions.RemoveCallbacks(IDialogueSystemActions)" />
+        /// <seealso cref="DialogueSystemActions.UnregisterCallbacks(IDialogueSystemActions)" />
+        public void SetCallbacks(IDialogueSystemActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueSystemActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueSystemActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="DialogueSystemActions" /> instance referencing this action map.
+    /// </summary>
+    public DialogueSystemActions @DialogueSystem => new DialogueSystemActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "MoveSystem" which allows adding and removing callbacks.
     /// </summary>
@@ -352,5 +480,20 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DialogueSystem" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="DialogueSystemActions.AddCallbacks(IDialogueSystemActions)" />
+    /// <seealso cref="DialogueSystemActions.RemoveCallbacks(IDialogueSystemActions)" />
+    public interface IDialogueSystemActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Dialogue" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDialogue(InputAction.CallbackContext context);
     }
 }

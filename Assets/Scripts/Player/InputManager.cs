@@ -7,6 +7,7 @@ public class InputManager : Singleton<InputManager>
     private InputSystem inputActions;
     private Vector2 MoveInput;
     public Vector2 moveInput { get { return MoveInput; } }
+    public bool dialogueInput;
     protected override void Awake()
     {
         base.Awake();
@@ -29,6 +30,7 @@ public class InputManager : Singleton<InputManager>
     void Update()
     {
         MoveInput = inputActions.MoveSystem.Move.ReadValue<Vector2>();
+        dialogueInput = inputActions.DialogueSystem.Dialogue.WasPressedThisFrame();
     }
 
 

@@ -79,4 +79,10 @@ public static class EventHandler
         RestartGameEvent?.Invoke();
     }
 
+    public static event Action<DialoguePiece> ShowDialogueEvent;
+    public static void CallShowDialogueEvent(DialoguePiece piece)
+    {
+        ShowDialogueEvent?.Invoke(piece);
+    }
+
 }

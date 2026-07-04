@@ -3,44 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Farm.Dialogue
-{
-    // [RequireComponent(typeof(NPCMovement))]
-    [RequireComponent(typeof(BoxCollider2D))]
     public class DialogueControler : MonoBehaviour
     {
-        // private NPCMovement npcMovement => GetComponent<NPCMovement>();
-
-        // [Header("npc对话数据库")]
+        [Header("npc对话数据库")]
         public NPCDialogueList_SO dialogueDataList;
         public UnityEvent OnFinishEvent;
         public List<DialoguePiece> dialogueList = new List<DialoguePiece>();
 
         private Stack<DialoguePiece> dialogueStack;
-        private GameObject NPCButton;
         private bool canTalk;
 
-        // private Questable questable => GetComponent<Questable>();
-
-        void Awake()
-        {
-            NPCButton = transform.GetChild(1).gameObject;
-        }
         void OnEnable()
         {
-            // EventHandler.AfterSceneLoadEvent += OnAfterSceneLoadEvent;
+            EventHandler.AfterSceneLoadEvent += OnAfterSceneLoadEvent;
         }
 
         void OnDisable()
         {
-            // EventHandler.AfterSceneLoadEvent -= OnAfterSceneLoadEvent;
+            EventHandler.AfterSceneLoadEvent -= OnAfterSceneLoadEvent;
         }
 
         private void OnAfterSceneLoadEvent()
         {
             if (dialogueDataList != null)
             {
-                // dialogueList = dialogueDataList.InitDialogueDic()[questable.questDetails.questStates].dialogues;
+                dialogueList = dialogueDataList.InitDialogueDic();
             }
             FillDialogueStake();
         }
@@ -49,7 +36,7 @@ namespace Farm.Dialogue
         {
             if (collision.CompareTag("Player"))
             {
-                // canTalk = npcMovement.interactble;
+                canTalk = true;
             }
         }
 
@@ -60,8 +47,8 @@ namespace Farm.Dialogue
 
         void Update()
         {
-            NPCButton.SetActive(canTalk);
-            if (canTalk && Input.GetKeyDown(KeyCode.Space))
+            // NPCButton.SetActive(canTalk);
+            if (canTalk && Input.GetKeyDown(KeyCode.F))
             {
                 StartCoroutine(DialogueRoutine());
             }
@@ -71,29 +58,22 @@ namespace Farm.Dialogue
         {
             if (dialogueStack.TryPop(out DialoguePiece result))
             {
-                // EventHandler.CallShowDialogueEvent(result);
+                EventHandler.CallShowDialogueEvent(result);
                 // EventHandler.CallUpdateGameStateEvent(GameState.Pause);
                 yield return new WaitUntil(() => result.isDown);
             }
             // 如果首次堆栈中没有数据,那么就先压入
             else
             {
-                // EventHandler.CallShowDialogueEvent(null);
+                EventHandler.CallShowDialogueEvent(null);
                 // EventHandler.CallUpdateGameStateEvent(GameState.GamePlay);
 
-                // isTalking = false;
                 if (OnFinishEvent != null)
                 {
                     OnFinishEvent.Invoke();
                     canTalk = false;
                 }
 
-                // 任务系统不适用
-                // if (questable != null)
-                // {
-                //     // print(questable.questDetails.questStates);
-                //     dialogueList = dialogueDataList.InitDialogueDic()[questable.questDetails.questStates].dialogues;
-                // }
                 FillDialogueStake();
             }
         }
@@ -116,4 +96,3 @@ namespace Farm.Dialogue
         // 玩家对话时判断当前的任务状态，接着从对话字典SO中抽出当前状态的对话列表
         // 当然是一个NPC一个对话字典
     }
-}

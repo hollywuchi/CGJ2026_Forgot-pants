@@ -1,9 +1,5 @@
-// TODO：重写对话列表
 using System.Collections.Generic;
-using System.Data;
-using Farm.Dialogue;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 
 [System.Serializable]
 public class dialogueList
@@ -14,19 +10,18 @@ public class dialogueList
 [CreateAssetMenu(fileName = "Dialogue", menuName = "Dialogue/NPCDialogueList_SO")]
 public class NPCDialogueList_SO : ScriptableObject
 {
-    public List<dialogueList> npcDialogueList;
-    // public Dictionary<QuestStates, dialogueList> npcDialogueDic = new Dictionary<QuestStates, dialogueList>();
+    public dialogueList npcDialogueList;
 
-    // public Dictionary<QuestStates, dialogueList> InitDialogueDic()
-    // {
-    //     foreach (QuestStates questStates in System.Enum.GetValues(typeof(QuestStates)))
-    //     {
-    //         if (!npcDialogueDic.ContainsKey(questStates))
-    //         {
-    //             npcDialogueDic.Add(questStates, npcDialogueList[(int)questStates]);
-    //         }
-    //     }
-
-    //     return npcDialogueDic;
-    // }
+    // 修改返回类型为 List<DialoguePiece>
+    public List<DialoguePiece> InitDialogueDic()
+    {
+        // 检查非空并直接返回列表内的对话数据
+        if (npcDialogueList != null && npcDialogueList.dialogues != null)
+        {
+            return npcDialogueList.dialogues;
+        }
+        
+        // 如果没有数据，则返回一个空列表以防报错
+        return new List<DialoguePiece>();
+    }
 }
