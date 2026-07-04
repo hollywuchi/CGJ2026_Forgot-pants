@@ -49,12 +49,6 @@ public static class EventHandler
         PlaySoundEvent?.Invoke(soundName);
     }
 
-    public static event Action<ParticalEffectType, Vector3> ParticalEffectEvent;
-    public static void CallParticalEffectEvent(ParticalEffectType type, Vector3 pos)
-    {
-        ParticalEffectEvent?.Invoke(type, pos);
-    }
-
     public static event Action<SoundDetails> InitSoundEffect;
     public static void CallInitSoundEffect(SoundDetails sound)
     {
@@ -73,16 +67,27 @@ public static class EventHandler
         PlayerDieEvent?.Invoke();
     }
 
-    public static event Action RestartGameEvent;
-    public static void CallRestartGameEvent()
-    {
-        RestartGameEvent?.Invoke();
-    }
-
     public static event Action<DialoguePiece> ShowDialogueEvent;
     public static void CallShowDialogueEvent(DialoguePiece piece)
     {
         ShowDialogueEvent?.Invoke(piece);
     }
 
+    public static event Action<Vector3> PlayerSavePointEvent;
+    public static void CallPlayerSavePointEvent(Vector3 pos)
+    {
+        PlayerSavePointEvent?.Invoke(pos);
+    }
+
+    public static event Action PlayerRebornEvent;
+    public static void CallPlayerRebornEvent()
+    {
+        PlayerRebornEvent?.Invoke();
+    }
+
+    public static event Action<GameState> UpdateGameStateEvent;
+    public static void CallUpdateGameStateEvent(GameState state)
+    {
+        UpdateGameStateEvent?.Invoke(state);
+    }
 }

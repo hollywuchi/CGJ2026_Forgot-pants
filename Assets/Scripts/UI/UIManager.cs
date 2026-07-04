@@ -17,6 +17,11 @@ public class UIManager : Singleton<UIManager>
         EventHandler.PlayerDieEvent -= () => rePanel.SetActive(true);
     }
 
+    public void RePlayer()
+    {
+        rePanel.SetActive(false);
+        EventHandler.CallPlayerRebornEvent();
+    }
 
     public void StartGame()
     {
@@ -26,10 +31,5 @@ public class UIManager : Singleton<UIManager>
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    public void RestartGame()
-    {
-        EventHandler.CallRestartGameEvent();
     }
 }

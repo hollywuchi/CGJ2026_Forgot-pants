@@ -18,12 +18,16 @@ public class InputManager : Singleton<InputManager>
     {
         inputActions.Enable();
         EventHandler.PlayerDieEvent += () => SetInputActive(false);
+        EventHandler.UpdateGameStateEvent += OnUpdateGameStateEvent;
+        EventHandler.PlayerRebornEvent += () => SetInputActive(true);
     }
 
     void OnDisable()
     {
         inputActions.Disable();
         EventHandler.PlayerDieEvent -= () => SetInputActive(false);
+        EventHandler.UpdateGameStateEvent -= OnUpdateGameStateEvent;
+        EventHandler.PlayerRebornEvent -= () => SetInputActive(true);
     }
 
 
@@ -44,6 +48,19 @@ public class InputManager : Singleton<InputManager>
             inputActions.Enable();
         else
             inputActions.Disable();
+    }
+
+     private void OnUpdateGameStateEvent(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.Pause:
+                SetInputActive(false);
+                break;
+            case GameState.GamePlay:
+                SetInputActive(true);
+                break;
+        }
     }
 
 }

@@ -1,0 +1,181 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88117ac59ff061c439c8574da7220da4, type: 3}
+  m_Name: Dialogue 6
+  m_EditorClassIdentifier: 
+  npcDialogueList:
+    dialogues:
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u98CE\u91CC\u6709\u58F0\u97F3\u5439\u6765\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u54E5\u54E5\u6211\u597D\u75DB\u5440\u2026\u2026\u6211\u597D\u75DB\u5440\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u6211\u662F\u4E0D\u662F\u6CA1\u6709\u817F\u4E86\u2026\u2026\u545C\u545C\u545C\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u90FD\u602A\u4F60\uFF0C\u90FD\u602A\u4F60\uFF01\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u54E5\uFF0Cicu\u4E00\u5929\u591A\u5C11\u94B1\u5440\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u54E5\uFF0C\u6211\u4F24\u53E3\u597D\u75D2\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u54E5\uFF0C\u4F60\u522B\u544A\u8BC9\u7238\u5988\u2026\u2026\u6211\uFF0C\u6211\u4E0D\u60F3\u6CBB\u4E86\u2026\u2026\u545C\u2026\u2026\u597D\u75DB\u554A\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u54E5\uFF0C\u9AD8\u4E2D\u633A\u96BE\u7684\uFF0C\u4F60\u8981\u597D\u597D\u4E0A\u5B66\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: ' '
+      faceImage: {fileID: 21300000, guid: f0c5a79c38f78924a9b99dd09059d65e, type: 3}
+      onLeft: 0
+      dialogueText: "\u54E5\uFF0C\u6211\u60F3\u53BB\u5317\u4EAC\u3002\u4F60\u66FF\u6211\u53BB\u53EF\u4EE5\u5417\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: -464871121, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u2026\u2026\u542C\u89C1\u4E86\u5417\u2026\u2026\u6709\u545C\u545C\u58F0\u2026\u2026\u662F\u98CE\u7684\u58F0\u97F3\uFF0C\u5BF9\u5417\uFF1F\u4E0D\uFF0C\u4E0D\u662F\u98CE\u5728\u8BF4\u8BDD\u2026\u2026\u662F\u6574\u5EA7\u8FF7
+        \u5BAB\u90FD\u662F\u5728\u4E3A\u6211\u54ED\u6CE3\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: -464871121, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u8FD9\u662F\u4F60\u7684\u5FC3\u8FF7\u5BAB\uFF0C\u4F60\u8D70\u4E0D\u51FA\u53BB\u7684\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: 94668373, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: -464871121, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u4F60\u6709\u597D\u597D\u4E3A\u81EA\u5DF1\u8FA9\u89E3\u4E48\uFF1F\u591C\u6DF1\u4EBA\u9759\u7684\u65F6\u5019\u4F60\u4F1A\u8BF4\u4E01\u5FC6\u5BF9\u4E0D\u8D77\u4E48\uFF1F\u8BF4\u51FA\u6765\uFF0C\u6211\u53EF\u4EE5\u5C11\u6068
+        \u4F60\u4E00\u70B9\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u4F60\u4F1A\u539F\u8C05\u6211\u5417\uFF1F\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: 640668963, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u4F60\u5728\u8BF4\u4EC0\u4E48\u5440\uFF0C\u90A3\u5F53\u7136\u662F\u4E0D\u53EF\u80FD\u7684\u3002\u4F60\u4E0D\u662F\u4E00\u76F4\u8FD9\u6837\u544A\u8BC9\u81EA\u5DF1\u4E48\uFF1F\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: 94668373, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: -464871121, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u4F60\u4E0D\u662F\u53EA\u76F8\u4FE1\u81EA\u5DF1\u76F8\u4FE1\u7684\u4E48\uFF1F\u4F60\u4E0D\u662F\u4E00\u76F4\u76F8\u4FE1\u6211\u8BA8\u538C\u4F60\u3001\u8D23\u602A\u4F60\u3001\u6068\u4F60\u5417\uFF1F\u8FD9\u662F\u4F60\u7ED9
+        \u81EA\u5DF1\u7684\u5B9A\u4F4D\u5440\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u6211\u2026\u2026\u6211\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: 640668963, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u6240\u4EE5\u73B0\u5728\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\u4E01\u5FC6\uFF01\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: 640668963, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u5FEB\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: 640668963, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u8DD1\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u5FC6 "
+      faceImage: {fileID: 640668963, guid: c34c2a83cc3ab934aafc55d373c8bbd0, type: 3}
+      onLeft: 0
+      dialogueText: "\u5427\u3002\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: 94668373, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u4E01\u5FC6\uFF01\r\n"
+      hasToPause: 0
+      isDown: 0

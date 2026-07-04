@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88117ac59ff061c439c8574da7220da4, type: 3}
+  m_Name: Dialogue 1
+  m_EditorClassIdentifier: 
+  npcDialogueList:
+    dialogues:
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u8FD9\u662F\u5728\u54EA\u2026\u2026\uFF1F\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: 94668373, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u56DE\u5BB6\u8DEF\u4E0A\u6CA1\u6709\u8FD9\u6BB5\u8DEF\u2026\u2026\u4E0D\u4F1A\u662F\u9B3C\u6253\u5899\u4E86\u5427\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u5514\u2026\u2026\u8EAB\u540E\u4E5F\u662F\u5947\u602A\u7684\u5730\u65B9\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u53C8\u51FA\u73B0\u5E7B\u89C9\u4E86\u5417\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: 94668373, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u5582\uFF01\u5582\uFF01\u6709\u4EBA\u5417\uFF01 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: 94668373, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\uFF1F\uFF1F "
+      faceImage: {fileID: -2065940341, guid: 21141dd32d32aec40b87c875d0397b5f, type: 3}
+      onLeft: 0
+      dialogueText: "\u563F\uFF01\u4E01\u4E00\uFF01 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u554A\uFF01\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\uFF1F\uFF1F "
+      faceImage: {fileID: -2065940341, guid: 21141dd32d32aec40b87c875d0397b5f, type: 3}
+      onLeft: 0
+      dialogueText: "\u2026\u2026 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u5413\u6211\u4E00\u8DF3\uFF0C\u8FD9\u662F\u54EA\u513F\uFF1F\u4F60\u662F\u8C01\uFF01 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\uFF1F\uFF1F "
+      faceImage: {fileID: -2065940341, guid: 21141dd32d32aec40b87c875d0397b5f, type: 3}
+      onLeft: 0
+      dialogueText: "\u2026\u2026 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\uFF1F\uFF1F "
+      faceImage: {fileID: -1857285780, guid: 21141dd32d32aec40b87c875d0397b5f, type: 3}
+      onLeft: 0
+      dialogueText: "\u5514\u2026\u2026\u8FD9\u4E48\u5FEB\u5C31\u628A\u6211\u5FD8\u4E86\u5417\uFF1F\u8FD9\u662F\u4F60\u7684\u8FF7\u5BAB\u5662\u3002 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\uFF1F\uFF1F "
+      faceImage: {fileID: -1857285780, guid: 21141dd32d32aec40b87c875d0397b5f, type: 3}
+      onLeft: 0
+      dialogueText: "\u6709\u4F24\u5FC3\u4E8B\u5BF9\u5417\uFF1F\u6840\u6840\u6840\u2026\u2026\u6211\u66FE\u7ECF\u542C\u522B\u4EBA\u8BF4\uFF0C\u5982\u679C\u4F60\u9047\u89C1\u96BE\u9898\u5E76\u4E14\u9003\u907F\u4E86\u5B83\uFF0C\u751F\u6D3B\u5C31
+        \u4F1A\u5C06\u96BE\u9898\u4E00\u6B21\u6B21\u629B\u5230\u4F60\u9762\u524D\uFF0C\u76F4\u5230\u4F60\u89E3\u51B3\u4E3A\u6B62\u2026\u2026\u6840\u6840\u6840\u2026\u2026 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\u6211\u6CA1\u6709\u3002 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u2026\u2026\u800C\u4E14\u6211\u4EEC\u8BA4\u8BC6\u5417\uFF1F "
+      hasToPause: 0
+      isDown: 0
+    - name: "\uFF1F\uFF1F "
+      faceImage: {fileID: -2065940341, guid: 21141dd32d32aec40b87c875d0397b5f, type: 3}
+      onLeft: 0
+      dialogueText: "\u2026\u2026\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\uFF1F\uFF1F "
+      faceImage: {fileID: -1857285780, guid: 21141dd32d32aec40b87c875d0397b5f, type: 3}
+      onLeft: 0
+      dialogueText: "\u6840\u6840\u6840\uFF0C\u65E2\u7136\u4E0D\u8BA4\u8BC6\u6211\uFF0C\u90A3\u6211\u5C31\u628A\u4F60\u6740\u6389\u597D\u4E86\u3002 "
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u5582\u5582\uFF01\r\n"
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u4F60\u8981\u5E72\u4EC0\u4E48\uFF1F "
+      hasToPause: 0
+      isDown: 0
+    - name: "\u4E01\u4E00 "
+      faceImage: {fileID: -1622223984, guid: 5f6b9687da3c80447ab08f1c0d46c171, type: 3}
+      onLeft: 1
+      dialogueText: "\u522B\u8FC7\u6765\uFF01\uFF01 "
+      hasToPause: 0
+      isDown: 0

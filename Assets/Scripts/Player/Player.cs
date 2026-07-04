@@ -12,7 +12,11 @@ public class Player : MonoBehaviour
     public int maxHealth;
     [Tooltip("玩家无敌时间")]
     public float unbeatableTime;
-     public int currentHealth;
+    [Tooltip("玩家锚点数量")]
+    public float anchorNum;
+    [Tooltip("玩家锚点预制体")]
+    public GameObject anchorPrefab;
+    private int currentHealth;
     [HideInInspector] public bool isUnbeatable;
 
     [Header("引用组件")]
@@ -21,6 +25,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Animator anim;
+    private Vector3 lastSavePosition;
+    // private float lastSavePoint;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,17 +38,16 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         EventHandler.PlayerHurtEvent += OnPlayerHurt;
         EventHandler.PlayerDieEvent += PlayerDie;
+        EventHandler.PlayerSavePointEvent += OnPlayerSavePointEvent;
+        EventHandler.PlayerRebornEvent += OnPlayerRebornEvent;
     }
 
     void OnDisable()
     {
         EventHandler.PlayerHurtEvent -= OnPlayerHurt;
         EventHandler.PlayerDieEvent -= PlayerDie;
-    }
-
-    void Start()
-    {
-
+        EventHandler.PlayerSavePointEvent -= OnPlayerSavePointEvent;
+        EventHandler.PlayerRebornEvent -= OnPlayerRebornEvent;
     }
 
     void Update()
@@ -104,7 +109,7 @@ public class Player : MonoBehaviour
                 print("玩家无敌结束");
             });
         }
-        else if(currentHealth == 0)
+        else if (currentHealth == 0)
             EventHandler.CallPlayerDieEvent();
     }
 
@@ -112,6 +117,28 @@ public class Player : MonoBehaviour
     {
         // 执行死亡事件
         Debug.Log("玩家趋势了");
+    }
+
+    private void OnPlayerSavePointEvent(Vector3 vector)
+    {
+        lastSavePosition = vector;
+    }
+
+    private void OnPlayerRebornEvent()
+    {
+        transform.position = lastSavePosition;
+        currentHealth = maxHealth;
+        isUnbeatable = true;
+        DOVirtual.DelayedCall(unbeatableTime, () =>
+        {
+            isUnbeatable = false;
+            print("玩家无敌结束");
+        });
+    }
+
+    private void PlayFootStepSound()
+    {
+        EventHandler.CallPlaySoundEvent(SoundName.FootSteps2);
     }
 
 }
