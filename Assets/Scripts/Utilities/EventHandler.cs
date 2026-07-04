@@ -61,4 +61,22 @@ public static class EventHandler
         InitSoundEffect?.Invoke(sound);
     }
 
+    public static event Action PlayerHurtEvent;
+    public static void CallPlayerHurtEvent()
+    {
+        PlayerHurtEvent?.Invoke();
+    }
+
+    public static event Action PlayerDieEvent;
+    public static void CallPlayerDieEvent()
+    {
+        PlayerDieEvent?.Invoke();
+    }
+
+    public static event Action RestartGameEvent;
+    public static void CallRestartGameEvent()
+    {
+        RestartGameEvent?.Invoke();
+    }
+
 }

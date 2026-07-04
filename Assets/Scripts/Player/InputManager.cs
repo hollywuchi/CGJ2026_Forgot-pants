@@ -16,11 +16,13 @@ public class InputManager : Singleton<InputManager>
     void OnEnable()
     {
         inputActions.Enable();
+        EventHandler.PlayerDieEvent += () => SetInputActive(false);
     }
 
     void OnDisable()
     {
         inputActions.Disable();
+        EventHandler.PlayerDieEvent -= () => SetInputActive(false);
     }
 
 
