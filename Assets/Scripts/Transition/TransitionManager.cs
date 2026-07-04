@@ -22,15 +22,15 @@ namespace CGJ.Transition
         }
         void OnEnable()
         {
-            // EventHandler.TransitionEvent += OnTransitionEvent;
-            // EventHandler.StartNewGameEvent += OnStartNewGameEvent;
+            EventHandler.TransitionEvent += OnTransitionEvent;
+            EventHandler.StartNewGameEvent += OnStartNewGameEvent;
             // EventHandler.EndGameEvent += OnEndGameEvent;
         }
         void OnDisable()
         {
-            // EventHandler.TransitionEvent -= OnTransitionEvent;
-            // EventHandler.StartNewGameEvent -= OnStartNewGameEvent;
-            // EventHandler.EndGameEvent += OnEndGameEvent;
+            EventHandler.TransitionEvent -= OnTransitionEvent;
+            EventHandler.StartNewGameEvent -= OnStartNewGameEvent;
+            // EventHandler.EndGameEvent -= OnEndGameEvent;
         }
 
 
@@ -64,7 +64,7 @@ namespace CGJ.Transition
         public IEnumerator Transition(string sceneName, Vector3 position)
         {
 
-            // EventHandler.CallBeforeSceneUnloadEvent();
+            EventHandler.CallBeforeSceneUnloadEvent();
 
             yield return Fade(1);
 
@@ -75,7 +75,9 @@ namespace CGJ.Transition
 
             // EventHandler.CallMoveToPosition(position);
 
-            // EventHandler.CallAfterSceneLoadEvent();
+            Debug.Log("当前加载的场景是：" + sceneName);
+
+            EventHandler.CallAfterSceneLoadEvent();
 
             // 如果没有新场景没有加载完，那么就不能淡出
             if (operation.isDone)
@@ -126,19 +128,19 @@ namespace CGJ.Transition
 
             if (SceneManager.GetActiveScene().name != "PersistentScene")
             {
-                // EventHandler.CallBeforeSceneUnloadEvent();
+                EventHandler.CallBeforeSceneUnloadEvent();
                 yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
             }
-
+            UIManager.Instance.mainPanel.SetActive(false);
             yield return LoadSceneSetActive(sceneName);
-            // EventHandler.CallAfterSceneLoadEvent();
+            EventHandler.CallAfterSceneLoadEvent();
 
             yield return Fade(0);
         }
 
         public IEnumerator UnloadScene()
         {
-            // EventHandler.CallBeforeSceneUnloadEvent();
+            EventHandler.CallBeforeSceneUnloadEvent();
             yield return Fade(1f);
             yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
             yield return Fade(0);

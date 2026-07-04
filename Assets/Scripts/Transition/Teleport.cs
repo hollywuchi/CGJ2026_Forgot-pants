@@ -1,6 +1,7 @@
 using UnityEngine;
 namespace CGJ.Transition
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class Teleport : MonoBehaviour
     {
         public string sceneToGo;
@@ -10,7 +11,7 @@ namespace CGJ.Transition
         {
             if(collision.tag == "Player")
             {
-                // EventHandler.CallTransitionEvent(sceneToGo,positionToGo);
+                EventHandler.CallTransitionEvent(sceneToGo,positionToGo);
             }
         }
     }

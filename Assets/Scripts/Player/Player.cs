@@ -1,14 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float Drag = 1f;
+    [Header("玩家属性")]
+    public float moveSpeed;
+    [Tooltip("玩家的最大生命值")]
+    public int maxHealth;
+    [Tooltip("玩家无敌时间")]
+    public float unbeatableTime;
+     public int currentHealth;
+    [HideInInspector] public bool isUnbeatable;
+
+    [Header("引用组件")]
+    [Tooltip("手电筒")]
+    public GameObject flashLight;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Animator anim;
@@ -16,12 +25,19 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        rb.drag = Drag;
     }
 
     void OnEnable()
     {
+        currentHealth = maxHealth;
+        EventHandler.PlayerHurtEvent += OnPlayerHurt;
+        EventHandler.PlayerDieEvent += PlayerDie;
+    }
 
+    void OnDisable()
+    {
+        EventHandler.PlayerHurtEvent -= OnPlayerHurt;
+        EventHandler.PlayerDieEvent -= PlayerDie;
     }
 
     void Start()
@@ -42,7 +58,8 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        rb.AddRelativeForce(moveInput * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        ChangeLightDir();
     }
 
     private void Move_Play()
@@ -58,4 +75,43 @@ public class Player : MonoBehaviour
             anim.SetBool("IsMoving", false);
         }
     }
+
+    /// <summary>
+    /// 改变手电筒的方向
+    /// </summary>
+    private void ChangeLightDir()
+    {
+        if (flashLight != null && moveInput != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg + 90;
+
+            flashLight.transform.localRotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
+
+    private void OnPlayerHurt()
+    {
+        if (isUnbeatable) return;
+        if (currentHealth > 0)
+        {
+            print("玩家受伤");
+            currentHealth -= 1;
+            isUnbeatable = true;
+            print("玩家无敌");
+            DOVirtual.DelayedCall(unbeatableTime, () =>
+            {
+                isUnbeatable = false;
+                print("玩家无敌结束");
+            });
+        }
+        else if(currentHealth == 0)
+            EventHandler.CallPlayerDieEvent();
+    }
+
+    private void PlayerDie()
+    {
+        // 执行死亡事件
+        Debug.Log("玩家趋势了");
+    }
+
 }

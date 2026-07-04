@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Demon
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground Buttom
+    uniqueID: 1873418405
+    locked: 0
+  - name: Ground Middle
+    uniqueID: 353974931
+    locked: 0
+  - name: Ground Top
+    uniqueID: 1674183943
+    locked: 0
+  - name: Collision
+    uniqueID: 1141714577
+    locked: 0
+  - name: Instance
+    uniqueID: 1210990205
     locked: 0
