@@ -48,7 +48,6 @@ public class AudioManager : Singleton<AudioManager>
     private void OnAfterSceneLoadEvent()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        Debug.Log($"当前场景:{currentScene}");
 
         SceneSoundItem sceneSound = sceneSoundList.GetSceneSound(currentScene);
         if (sceneSound == null)

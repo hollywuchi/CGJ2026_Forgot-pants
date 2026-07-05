@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 这里放置事件处理器的代码
@@ -95,5 +96,29 @@ public static class EventHandler
     public static void CallEndGameEvent()
     {
         EndGameEvent?.Invoke();
+    }
+
+    public static event Action<CGPiece, Sprite> ShowCGEvent;
+    public static void CallShowCGEvent(CGPiece piece, Sprite image)
+    {
+        ShowCGEvent?.Invoke(piece, image);
+    }
+
+    public static event Action EndCGEvent;
+    public static void CallEndCGEvent()
+    {
+        EndCGEvent?.Invoke();
+    }
+
+    public static event Action<int> PlayCGEvent;
+    public static void CallPlayCGEvent(int index)
+    {
+        PlayCGEvent?.Invoke(index);
+    }
+
+    public static event Action AfterCGFinishEvent;
+    public static void CallAfterCGFinishEvent()
+    {
+        AfterCGFinishEvent?.Invoke();
     }
 }

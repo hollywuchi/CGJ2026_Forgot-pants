@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlayerLight : MonoBehaviour
 {
-    public float timedely = 1.5f;
+    public float timedely = 0.5f;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Demon"))

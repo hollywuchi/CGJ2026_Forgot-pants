@@ -55,13 +55,13 @@ public class Demon : MonoBehaviour
     void OnEnable()
     {
         EventHandler.UpdateGameStateEvent += OnUpdateGameStateEvent;
-        EventHandler.StartNewGameEvent += OnStartNewGameEvent;
+        EventHandler.AfterCGFinishEvent += IsGaming;
     }
 
     void OnDisable()
     {
         EventHandler.UpdateGameStateEvent -= OnUpdateGameStateEvent;
-        EventHandler.StartNewGameEvent -= OnStartNewGameEvent;
+        EventHandler.AfterCGFinishEvent -= IsGaming;
         demonSpriteRenderer.DOKill();
     }
 
@@ -96,7 +96,7 @@ public class Demon : MonoBehaviour
         }
     }
 
-    private void OnStartNewGameEvent(int obj)
+    public void IsGaming()
     {
         isGaming = true;
     }
