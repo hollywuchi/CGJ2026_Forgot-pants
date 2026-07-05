@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class DialogueUI : MonoBehaviour
 {
     public GameObject dialogueBox;
-    public GameObject CGPanel;
     public Text dialogueText;
-    public Text CGText;
     public Image faceRight, faceLeft;
     public Text nameRight, nameLeft;
+    // public GameObject continueBox;
     void Awake()
     {
         // continueBox.SetActive(false);

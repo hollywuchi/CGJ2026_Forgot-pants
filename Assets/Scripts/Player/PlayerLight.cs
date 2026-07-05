@@ -5,12 +5,11 @@ using DG.Tweening;
 
 public class PlayerLight : MonoBehaviour
 {
-    public float timedely = 1.5f;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Demon"))
         {
-            DOVirtual.DelayedCall(timedely, () =>
+            DOVirtual.DelayedCall(1.5f, () =>
             {
                 other.GetComponent<Demon>().needFading = true;
             });
@@ -21,7 +20,7 @@ public class PlayerLight : MonoBehaviour
     {
         if (other.CompareTag("Demon"))
         {
-            DOVirtual.DelayedCall(timedely, () =>
+            DOVirtual.DelayedCall(1.5f, () =>
             {
                 other.GetComponent<Demon>().needFading = false;
             });

@@ -24,49 +24,48 @@ public class AudioManager : Singleton<AudioManager>
     public AudioMixerSnapshot ambientOnly;
     public AudioMixerSnapshot mute;
 
-    private float musicTransitionSecond = 0f;
+    private float musicTransitionSecond = 4f;
     void Start()
     {
         // TODO:采集音频
-        PlayMusicClip(soundDetailList.GetSoundDetails(SoundName.Demon), 1f);
+        // PlayMusicClip(soundDetailList.GetSoundDetails(SoundName.Music_UI), 1f);
     }
     void OnEnable()
     {
         EventHandler.AfterSceneLoadEvent += OnAfterSceneLoadEvent;
         EventHandler.PlaySoundEvent += OnPlaySoundEvent;
-        EventHandler.EndGameEvent += OnEndGameEvent;
+        // EventHandler.EndGameEvent += OnEndGameEvent;
     }
 
     void OnDisable()
     {
         EventHandler.AfterSceneLoadEvent -= OnAfterSceneLoadEvent;
         EventHandler.PlaySoundEvent -= OnPlaySoundEvent;
-        EventHandler.EndGameEvent -= OnEndGameEvent;
+        // EventHandler.EndGameEvent -= OnEndGameEvent;
     }
 
 
     private void OnAfterSceneLoadEvent()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        Debug.Log($"当前场景:{currentScene}");
 
-        SceneSoundItem sceneSound = sceneSoundList.GetSceneSound(currentScene);
-        if (sceneSound == null)
-            return;
+        // SceneSoundItem sceneSound = sceneSoundList.GetSceneSound(currentScene);
+        // if (sceneSound == null)
+        //     return;
 
-        SoundDetails ambient = soundDetailList.GetSoundDetails(sceneSound.ambient);
-        SoundDetails gameSource = soundDetailList.GetSoundDetails(sceneSound.music);
+        // SoundDetails ambient = soundDetailList.GetSoundDetails(sceneSound.ambient);
+        // SoundDetails gameSource = soundDetailList.GetSoundDetails(sceneSound.music);
 
         if (soundRoutine != null)
             StopCoroutine(soundRoutine);
-        soundRoutine = StartCoroutine(PlaySoundRoutine(gameSource, ambient));
+        // soundRoutine = StartCoroutine(PlaySoundRoutine(gameSource, ambient));
 
     }
     private void OnPlaySoundEvent(SoundName soundName)
     {
         var soundDetails = soundDetailList.GetSoundDetails(soundName);
-        if (soundDetails != null)
-            EventHandler.CallInitSoundEffect(soundDetails);
+        // if (soundDetails != null)
+            // EventHandler.CallInitSoundEffect(soundDetails);
     }
 
     private void OnEndGameEvent()
@@ -79,13 +78,12 @@ public class AudioManager : Singleton<AudioManager>
 
     private IEnumerator PlaySoundRoutine(SoundDetails music, SoundDetails ambient)
     {
-        if (music != null)
+        if (music != null && ambient != null)
         {
-            // PlayAmbientClip(ambient, 1f);
-            // yield return new WaitForSeconds(MusicStartSecond);
+            PlayAmbientClip(ambient, 1f);
+            yield return new WaitForSeconds(MusicStartSecond);
             PlayMusicClip(music, musicTransitionSecond);
         }
-        yield return null;
     }
 
     /// <summary>
@@ -99,22 +97,22 @@ public class AudioManager : Singleton<AudioManager>
         if (gameSource.isActiveAndEnabled)
             gameSource.Play();
 
-        // normal.TransitionTo(musicSecond);
+        normal.TransitionTo(musicSecond);
     }
 
     /// <summary>
     /// 播放环境音乐
     /// </summary>
     /// <param name="soundDetails"></param>
-    // private void PlayAmbientClip(SoundDetails soundDetails, float musicSecond)
-    // {
-    //     audioMixer.SetFloat("AmbientVolume", ConvertSoundVolume(soundDetails.soundVolume));
-    //     ambientSource.clip = soundDetails.soundClip;
-    //     if (ambientSource.isActiveAndEnabled)
-    //         ambientSource.Play();
+    private void PlayAmbientClip(SoundDetails soundDetails, float musicSecond)
+    {
+        audioMixer.SetFloat("AmbientVolume", ConvertSoundVolume(soundDetails.soundVolume));
+        ambientSource.clip = soundDetails.soundClip;
+        if (ambientSource.isActiveAndEnabled)
+            ambientSource.Play();
 
-    //     ambientOnly.TransitionTo(musicSecond);
-    // }
+        ambientOnly.TransitionTo(musicSecond);
+    }
 
     private float ConvertSoundVolume(float volume)
     {

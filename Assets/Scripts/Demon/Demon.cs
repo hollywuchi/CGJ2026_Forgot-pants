@@ -21,17 +21,13 @@ public class Demon : MonoBehaviour
     [HideInInspector] public bool needFading;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
-    private CircleCollider2D attackColl;
     private SpriteRenderer demonSpriteRenderer;
     private Animator demonAnimator;
-    private bool isPased;
-    private bool isGaming;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
-        attackColl = GetComponent<CircleCollider2D>();
         demonSpriteRenderer = GetComponent<SpriteRenderer>();
         demonAnimator = GetComponent<Animator>();
     }
@@ -41,34 +37,20 @@ public class Demon : MonoBehaviour
         if (needFading)
         {
             demonSpriteRenderer.DOFade(0, fadeTime)
-            .SetEase(Ease.OutSine)
-            .OnComplete(() => attackColl.excludeLayers = LayerMask.GetMask("Player"));
+            .SetEase(Ease.Linear)
+            .OnComplete(() => coll.excludeLayers = LayerMask.GetMask("Player"));
         }
         else
         {
             demonSpriteRenderer.DOFade(1, appearTime)
-            .SetEase(Ease.OutSine)
-            .OnComplete(() => attackColl.excludeLayers = 0);
+            .SetEase(Ease.Linear)
+            .OnComplete(() => coll.excludeLayers = 0);
         }
     }
 
-    void OnEnable()
-    {
-        EventHandler.UpdateGameStateEvent += OnUpdateGameStateEvent;
-        EventHandler.StartNewGameEvent += OnStartNewGameEvent;
-    }
-
-    void OnDisable()
-    {
-        EventHandler.UpdateGameStateEvent -= OnUpdateGameStateEvent;
-        EventHandler.StartNewGameEvent -= OnStartNewGameEvent;
-        demonSpriteRenderer.DOKill();
-    }
-
-
     private void FixedUpdate()
     {
-        if (!needFading && !isInLight && !isPased && isGaming)
+        if (!needFading || isInLight)
         {
             MoveTowardsPlayer();
         }
@@ -83,22 +65,9 @@ public class Demon : MonoBehaviour
         }
     }
 
-    private void OnUpdateGameStateEvent(GameState state)
+    void OnDisable()
     {
-        switch (state)
-        {
-            case GameState.Pause:
-                isPased = true;
-                break;
-            case GameState.GamePlay:
-                isPased = false;
-                break;
-        }
-    }
-
-    private void OnStartNewGameEvent(int obj)
-    {
-        isGaming = true;
+        demonSpriteRenderer.DOKill();
     }
 
 }
