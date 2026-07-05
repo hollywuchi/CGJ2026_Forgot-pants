@@ -12,10 +12,6 @@ public class Player : MonoBehaviour
     public int maxHealth;
     [Tooltip("玩家无敌时间")]
     public float unbeatableTime;
-    [Tooltip("玩家锚点数量")]
-    public float anchorNum;
-    [Tooltip("玩家锚点预制体")]
-    public GameObject anchorPrefab;
     private int currentHealth;
     [HideInInspector] public bool isUnbeatable;
 
@@ -26,16 +22,16 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Animator anim;
     private Vector3 lastSavePosition;
-    // private float lastSavePoint;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        lastSavePosition = transform.position;
     }
 
     void OnEnable()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth - 1;
         EventHandler.PlayerHurtEvent += OnPlayerHurt;
         EventHandler.PlayerDieEvent += PlayerDie;
         EventHandler.PlayerSavePointEvent += OnPlayerSavePointEvent;
@@ -101,6 +97,7 @@ public class Player : MonoBehaviour
         {
             print("玩家受伤");
             currentHealth -= 1;
+            UIManager.Instance.OnPlayerHurt();
             isUnbeatable = true;
             print("玩家无敌");
             DOVirtual.DelayedCall(unbeatableTime, () =>

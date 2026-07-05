@@ -54,11 +54,13 @@ public class DialogueControler : MonoBehaviour
 
     void Update()
     {
-        if (!isActive && canTalk && Input.GetKeyDown(KeyCode.F))
+        if (!isActive && canTalk && Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(DialogueRoutine());
         }
     }
+
+    public void TriggerDialogue() => StartCoroutine(DialogueRoutine());
 
     private IEnumerator DialogueRoutine()
     {

@@ -24,13 +24,13 @@ namespace CGJ.Transition
         {
             EventHandler.TransitionEvent += OnTransitionEvent;
             EventHandler.StartNewGameEvent += OnStartNewGameEvent;
-            // EventHandler.EndGameEvent += OnEndGameEvent;
+            EventHandler.EndGameEvent += OnEndGameEvent;
         }
         void OnDisable()
         {
             EventHandler.TransitionEvent -= OnTransitionEvent;
             EventHandler.StartNewGameEvent -= OnStartNewGameEvent;
-            // EventHandler.EndGameEvent -= OnEndGameEvent;
+            EventHandler.EndGameEvent -= OnEndGameEvent;
         }
 
 
@@ -38,11 +38,14 @@ namespace CGJ.Transition
         private void OnStartNewGameEvent(int obj)
         {
             StartCoroutine(LoadSaveDataScene(startSceneName));
+            Cursor.visible = false;
         }
 
         private void OnEndGameEvent()
         {
-            StartCoroutine(UnloadScene());
+            if (SceneManager.GetActiveScene().name != "PersistentScene" && SceneManager.GetActiveScene().name != "UI")
+                StartCoroutine(UnloadScene());
+            Cursor.visible = true;
         }
 
         void Start()

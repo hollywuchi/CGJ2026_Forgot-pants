@@ -16,8 +16,8 @@ public class CGManager : Singleton<CGManager>
 
     [Header("CG完成事件")]
     public UnityEvent OnCGFinishEvent;
-
     private CGController currentController;
+    private int currentCGIndex = 0;
     private bool isPlaying;
 
     protected override void Awake()
@@ -29,6 +29,7 @@ public class CGManager : Singleton<CGManager>
     void OnEnable()
     {
         EventHandler.PlayCGEvent += OnPlayCGEvent;
+        // TODO:开头CG
         EventHandler.StartNewGameEvent += OnStartNewGameEvent;
     }
 
@@ -52,13 +53,13 @@ public class CGManager : Singleton<CGManager>
         if (index >= 0 && index < allCGData.Length)
         {
             currentController.cgDataList = allCGData[index];
-            
+
             // 使用对应索引的图片，如果没有则使用默认图片
             if (cgImageList != null && index < cgImageList.Length && cgImageList[index] != null)
             {
                 currentController.defaultCGImage = cgImageList[index];
             }
-            
+
             currentController.OnCGFinishEvent = OnCGFinishEvent;
             currentController.PlayCG();
         }
@@ -80,11 +81,6 @@ public class CGManager : Singleton<CGManager>
         }
     }
 
-    public int GetCGCount()
-    {
-        return allCGData.Length;
-    }
-
     private void OnStartNewGameEvent(int obj)
     {
         EventHandler.CallPlayCGEvent(0);
@@ -93,5 +89,10 @@ public class CGManager : Singleton<CGManager>
     public void OnAfterCGFinishEvent()
     {
         EventHandler.CallAfterCGFinishEvent();
+        currentCGIndex++;
+        if (currentCGIndex == allCGData.Length - 1)
+        {
+            OnPlayCGEvent(allCGData.Length - 1);
+        }
     }
 }

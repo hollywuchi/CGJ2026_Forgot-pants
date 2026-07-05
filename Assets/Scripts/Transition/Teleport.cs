@@ -1,7 +1,8 @@
 using UnityEngine;
+using DG.Tweening;
+
 namespace CGJ.Transition
 {
-    [RequireComponent(typeof(BoxCollider2D))]
     public class Teleport : MonoBehaviour
     {
         public string sceneToGo;
@@ -13,6 +14,24 @@ namespace CGJ.Transition
             {
                 EventHandler.CallTransitionEvent(sceneToGo,positionToGo);
             }
+        }
+
+        public void TransitionToScene()
+        {
+            EventHandler.CallTransitionEvent(sceneToGo, positionToGo);
+        }
+
+        public void OpenUI()
+        {
+            UIManager.Instance.DoorPanel.SetActive(true);
+
+            DOVirtual.DelayedCall(5f, () =>
+            {
+                if (UIManager.Instance.DoorPanel != null)
+                {
+                    UIManager.Instance.DoorPanel.SetActive(false);
+                }
+            });
         }
     }
 }

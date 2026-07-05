@@ -22,7 +22,7 @@ public class AudioManager : Singleton<AudioManager>
     [Header("Auido Snapshots")]
     public AudioMixerSnapshot normal;
     public AudioMixerSnapshot ambientOnly;
-    public AudioMixerSnapshot mute;
+    // public AudioMixerSnapshot mute;
 
     private float musicTransitionSecond = 0f;
     void Start()
@@ -73,7 +73,7 @@ public class AudioManager : Singleton<AudioManager>
         if (soundRoutine != null)
             StopCoroutine(soundRoutine);
         PlayMusicClip(soundDetailList.GetSoundDetails(SoundName.Music_UI), 1f);
-        mute.TransitionTo(1f);
+        // mute.TransitionTo(1f);
     }
 
     private IEnumerator PlaySoundRoutine(SoundDetails music, SoundDetails ambient)

@@ -15,9 +15,9 @@ MonoBehaviour:
   soundDetails:
   - soundName: 3
     soundClip: {fileID: 8300000, guid: 9e5a730d1a5f00147969f5709ac65fb4, type: 3}
-    soundPitchMin: 0.1
-    soundPitchMax: 0.1
-    soundVolume: 0.1
+    soundPitchMin: 1
+    soundPitchMax: 1.2
+    soundVolume: 0.3
   - soundName: 1
     soundClip: {fileID: 8300000, guid: d1492407cbd3a3d47a9752130e9a0e89, type: 3}
     soundPitchMin: 1
