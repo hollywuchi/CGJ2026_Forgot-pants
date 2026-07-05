@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: SceneSoundList_SO
   m_EditorClassIdentifier: 
   sceneSoundItems:
-  - sceneName: 
+  - sceneName: 00.TestStage
     ambient: 0
-    music: 0
+    music: 4
+  - sceneName: 01.TestStage
+    ambient: 0
+    music: 6
+  - sceneName: UI
+    ambient: 0
+    music: 5

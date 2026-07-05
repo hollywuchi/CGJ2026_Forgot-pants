@@ -90,4 +90,10 @@ public static class EventHandler
     {
         UpdateGameStateEvent?.Invoke(state);
     }
+
+    public static event Action EndGameEvent;
+    public static void CallEndGameEvent()
+    {
+        EndGameEvent?.Invoke();
+    }
 }

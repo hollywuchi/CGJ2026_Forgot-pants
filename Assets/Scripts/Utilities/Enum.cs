@@ -1,5 +1,6 @@
 public enum SoundName
 {
+    None,
     Music_UI,FootSteps2,resurrection,
     lost,Demon,Anchor
 }
